@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.desafiozup.model.Usuario;
 import br.com.desafiozup.repository.UsuarioRepository;
+import br.com.desafiozup.service.UsuarioService;
 
 
 @RestController
@@ -25,6 +26,10 @@ public class UsuarioController {
 	
 	@Autowired
 	private UsuarioRepository repository;
+	
+	@Autowired
+	private UsuarioService usuarioService;
+
 		
 	@GetMapping
 	public ResponseEntity<List<Usuario>> GetAll() {
@@ -38,8 +43,13 @@ public class UsuarioController {
 	
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario) {
+		try {
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(repository.save(usuario));
+				.body(usuarioService.CadastrarUsuario(usuario));
+		} catch (Exception e)
+		{
+			return ResponseEntity.badRequest().build();
+		}
 	}
 
 	@PutMapping
