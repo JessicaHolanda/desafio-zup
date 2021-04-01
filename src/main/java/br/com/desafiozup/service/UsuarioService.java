@@ -14,9 +14,15 @@ public class UsuarioService {
 
 	public Usuario CadastrarUsuario(Usuario usuario) {
 		
+		
+		if (repository.existsUsuarioEmail(usuario.getEmail())) {
 
+		}
+		 
 		return repository.save(usuario);
+		
+		
+		
+		
 	}
-
-
 }
