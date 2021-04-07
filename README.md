@@ -1,6 +1,7 @@
 teste 
 
 <code>
+	
 @Entity
 @Table
 public class AplicacaoVacina {
