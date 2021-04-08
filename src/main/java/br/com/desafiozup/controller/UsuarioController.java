@@ -42,14 +42,10 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario) {
-		try {
+	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario) throws Exception{
+
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(usuarioService.CadastrarUsuario(usuario));
-		} catch (Exception e)
-		{
-			return ResponseEntity.badRequest().build();
-		}
 	}
 
 	@PutMapping
