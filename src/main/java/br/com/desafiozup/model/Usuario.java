@@ -3,13 +3,13 @@ package br.com.desafiozup.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -24,26 +24,24 @@ public class Usuario {
 	private long id;
 	
 	@NotNull
-	@Size(min =2, max =100)
+	@Size(min =3)
 	private String nome;
 	
-	@NotNull
-	@Size(min =2, max =100)
-	@Column(unique = true)
+	@NotBlank
+	@Size(min =11)
 	private String cpf;
 	
-	@NotNull
-	@Size(min =5, max =100)
-	@Column(unique = true)
+	@NotBlank
+	@Size(min =10)
 	private String email;
 	
 	@NotNull
-	@Size(min =2, max =100)
+	@Size(min =8)
 	private String dataNascimento;
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
-	private List <AplicacaoVacina> postagem;
+	private List <AplicacaoVacina> vacina;
 
 	public long getId() {
 		return id;
@@ -85,13 +83,12 @@ public class Usuario {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public List<AplicacaoVacina> getPostagem() {
-		return postagem;
+	public List<AplicacaoVacina> getVacina() {
+		return vacina;
 	}
 
-	public void setPostagem(List<AplicacaoVacina> postagem) {
-		this.postagem = postagem;
+	public void setVacina(List<AplicacaoVacina> vacina) {
+		this.vacina = vacina;
 	}
-		
 	
 }

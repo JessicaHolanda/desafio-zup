@@ -19,6 +19,7 @@ import br.com.desafiozup.model.AplicacaoVacina;
 import br.com.desafiozup.repository.AplicacaoVacinaRepository;
 import br.com.desafiozup.service.AplicacaoVacinaService;
 
+
 @RestController
 @RequestMapping("/vacinas")
 @CrossOrigin("*")
@@ -42,7 +43,7 @@ public class AplicacaoVacinaController {
 
 	@GetMapping("/vacinas/{vacina}")
 	public ResponseEntity<List<AplicacaoVacina>> GetbyTitulo(@PathVariable String vacina) {
-		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(vacina));
+		return ResponseEntity.ok(repository.findAllByVacinaContainingIgnoreCase(vacina));
 	}
 
 	@PostMapping
